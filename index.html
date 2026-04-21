@@ -2,7 +2,7 @@
 <html lang="da">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Icon Backstage</title>
   <link rel="icon" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" />
   <style>
@@ -144,6 +144,7 @@
       display: none;
       width: 100%;
       height: 100vh;
+      height: 100dvh;
       align-items: center;
       justify-content: center;
       flex-direction: column;
@@ -221,16 +222,16 @@
     /* iPhone 15 Pro mockup */
     .iphone-wrapper {
       position: relative;
-      width: 340px;
+      width: 320px;
       flex-shrink: 0;
     }
 
     .iphone-frame {
       position: relative;
-      width: 340px;
-      height: 737px;
+      width: 320px;
+      height: 693px;
       background: #1a1a1a;
-      border-radius: 54px;
+      border-radius: 50px;
       box-shadow:
         0 0 0 2px #3a3a3a,
         0 0 0 4px #1a1a1a,
@@ -282,19 +283,19 @@
     .iphone-screen {
       position: absolute;
       inset: 0;
-      border-radius: 54px;
+      border-radius: 50px;
       overflow: hidden;
       background: #000;
     }
 
     .iphone-screen iframe {
-      width: 393px;
-      height: 852px;
+      width: 390px;
+      height: 844px;
       border: none;
       transform-origin: top left;
-      transform: scale(0.8651);
-      /* scale = 340/393 = 0.8651 */
-      /* scaled height = 852 * 0.8651 = 737px — fills the 700px frame with slight overflow hidden by border-radius */
+      transform: scale(0.8205);
+      /* scale = 320/390 = 0.8205 */
+      /* scaled height = 844 * 0.8205 = 693px */
       pointer-events: all;
       display: block;
     }
@@ -332,15 +333,21 @@
     .mobile-view {
       display: none;
       width: 100%;
-      height: 100vh;
+      height: 100dvh;
+      height: 100vh; /* fallback */
       position: fixed;
-      inset: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
     }
 
     .mobile-view iframe {
       width: 100%;
       height: 100%;
+      height: 100dvh;
       border: none;
+      display: block;
     }
 
     /* ─── RESPONSIVE ─── */
@@ -369,13 +376,16 @@
     }
 
     @media (max-height: 820px) {
-      .iphone-frame {
-        height: 620px;
+      .iphone-wrapper {
+        width: 280px;
       }
-
+      .iphone-frame {
+        width: 280px;
+        height: 606px;
+      }
       .iphone-screen iframe {
-        transform: scale(0.727);
-        /* 340/393 * (620/737) = 0.727 */
+        transform: scale(0.7179);
+        /* scale = 280/390 = 0.7179, height = 844*0.7179 = 606px */
       }
     }
   </style>
