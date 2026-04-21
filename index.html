@@ -41,7 +41,14 @@
       z-index: 1000;
       flex-direction: column;
       gap: 0;
-      padding-bottom: 0;
+      padding: 0;
+    }
+
+    .gate-center-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
     }
 
     #password-gate.hidden {
@@ -49,12 +56,12 @@
     }
 
     .gate-logo {
-      width: 340px;
-      height: 200px;
+      width: 380px;
+      height: 220px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
 
     .gate-logo img {
@@ -394,12 +401,9 @@
 
   <!-- PASSWORD GATE -->
   <div id="password-gate">
+    <div class="gate-center-group">
     <div class="gate-logo">
       <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" alt="Icon Backstage" />
-    </div>
-    <div>
-      <div class="gate-title">Icon Backstage</div>
-      <div class="gate-subtitle">Salon Management Platform</div>
     </div>
     <div class="gate-form">
       <input
@@ -412,6 +416,7 @@
       />
       <button class="gate-btn" onclick="checkPassword()">Åbn app →</button>
       <div class="gate-error" id="gate-error"></div>
+    </div>
     </div>
   </div>
 
