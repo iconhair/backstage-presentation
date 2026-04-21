@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Icon Backstage</title>
+  <link rel="icon" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --espresso: #362a23;
+      --cream: #f4f2f2;
+      --taupe: #706158;
+      --accent: #d6e3e9;
+      --gold: #a1968f;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--espresso);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* ─── PASSWORD GATE ─── */
+    #password-gate {
+      position: fixed;
+      inset: 0;
+      background: var(--espresso);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      flex-direction: column;
+      gap: 0;
+      padding-bottom: 0;
+    }
+
+    #password-gate.hidden {
+      display: none;
+    }
+
+    .gate-logo {
+      width: 340px;
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .gate-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .gate-title {
+      color: var(--cream);
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      text-align: center;
+      display: none;
+    }
+
+    .gate-subtitle {
+      display: none;
+    }
+
+    .gate-form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      width: 280px;
+      padding: 0;
+      margin-top: 0;
+    }
+
+    .gate-input {
+      width: 100%;
+      padding: 16px 20px;
+      border-radius: 14px;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.08);
+      color: var(--cream);
+      font-size: 18px;
+      text-align: center;
+      letter-spacing: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .gate-input::placeholder {
+      letter-spacing: 1px;
+      color: rgba(255,255,255,0.3);
+      font-size: 14px;
+    }
+
+    .gate-input:focus {
+      border-color: rgba(255,255,255,0.4);
+    }
+
+    .gate-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      border: none;
+      background: var(--cream);
+      color: var(--espresso);
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+      letter-spacing: 0.5px;
+    }
+
+    .gate-btn:hover {
+      opacity: 0.9;
+    }
+
+    .gate-btn:active {
+      transform: scale(0.98);
+    }
+
+    .gate-error {
+      color: #ff6b6b;
+      font-size: 13px;
+      text-align: center;
+      min-height: 18px;
+    }
+
+    /* ─── MAIN PRESENTATION ─── */
+    #presentation {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    #presentation.visible {
+      display: flex;
+    }
+
+    /* Desktop: iPhone mockup */
+    .desktop-view {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 60px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .brand-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 280px;
+    }
+
+    .brand-logo {
+      width: 64px;
+      height: 64px;
+      border-radius: 16px;
+      overflow: hidden;
+    }
+
+    .brand-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .brand-name {
+      color: var(--cream);
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .brand-name span {
+      color: var(--gold);
+    }
+
+    .brand-desc {
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 6px 14px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      width: fit-content;
+    }
+
+    /* iPhone 15 Pro mockup */
+    .iphone-wrapper {
+      position: relative;
+      width: 340px;
+      flex-shrink: 0;
+    }
+
+    .iphone-frame {
+      position: relative;
+      width: 340px;
+      height: 737px;
+      background: #1a1a1a;
+      border-radius: 54px;
+      box-shadow:
+        0 0 0 2px #3a3a3a,
+        0 0 0 4px #1a1a1a,
+        0 0 0 6px #4a4a4a,
+        0 40px 80px rgba(0,0,0,0.6),
+        inset 0 0 0 1px rgba(255,255,255,0.05);
+      overflow: hidden;
+    }
+
+    /* Side buttons */
+    .iphone-frame::before {
+      content: '';
+      position: absolute;
+      left: -8px;
+      top: 120px;
+      width: 4px;
+      height: 36px;
+      background: #3a3a3a;
+      border-radius: 2px 0 0 2px;
+      box-shadow: 0 48px 0 #3a3a3a, 0 88px 0 #3a3a3a;
+      z-index: 10;
+    }
+
+    .iphone-frame::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: 160px;
+      width: 4px;
+      height: 64px;
+      background: #3a3a3a;
+      border-radius: 0 2px 2px 0;
+      z-index: 10;
+    }
+
+    /* Dynamic Island */
+    .dynamic-island {
+      position: absolute;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 34px;
+      background: #000;
+      border-radius: 20px;
+      z-index: 20;
+    }
+
+    .iphone-screen {
+      position: absolute;
+      inset: 0;
+      border-radius: 54px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .iphone-screen iframe {
+      width: 393px;
+      height: 852px;
+      border: none;
+      transform-origin: top left;
+      transform: scale(0.8651);
+      /* scale = 340/393 = 0.8651 */
+      /* scaled height = 852 * 0.8651 = 737px — fills the 700px frame with slight overflow hidden by border-radius */
+      pointer-events: all;
+      display: block;
+    }
+
+    /* Bottom indicator */
+    .home-indicator {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 5px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 3px;
+      z-index: 20;
+    }
+
+    /* Reflection overlay */
+    .iphone-reflection {
+      position: absolute;
+      inset: 0;
+      border-radius: 54px;
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.06) 0%,
+        transparent 40%,
+        transparent 60%,
+        rgba(255,255,255,0.02) 100%
+      );
+      pointer-events: none;
+      z-index: 30;
+    }
+
+    /* ─── MOBILE VIEW (full screen) ─── */
+    .mobile-view {
+      display: none;
+      width: 100%;
+      height: 100vh;
+      position: fixed;
+      inset: 0;
+    }
+
+    .mobile-view iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      body {
+        background: #000;
+      }
+
+      #password-gate {
+        background: var(--espresso);
+      }
+
+      .desktop-view {
+        display: none !important;
+      }
+
+      .mobile-view {
+        display: block !important;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .brand-info {
+        display: none;
+      }
+    }
+
+    @media (max-height: 820px) {
+      .iphone-frame {
+        height: 620px;
+      }
+
+      .iphone-screen iframe {
+        transform: scale(0.727);
+        /* 340/393 * (620/737) = 0.727 */
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PASSWORD GATE -->
+  <div id="password-gate">
+    <div class="gate-logo">
+      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" alt="Icon Backstage" />
+    </div>
+    <div>
+      <div class="gate-title">Icon Backstage</div>
+      <div class="gate-subtitle">Salon Management Platform</div>
+    </div>
+    <div class="gate-form">
+      <input
+        type="password"
+        id="password-input"
+        class="gate-input"
+        placeholder="Adgangskode"
+        autocomplete="current-password"
+        autofocus
+      />
+      <button class="gate-btn" onclick="checkPassword()">Åbn app →</button>
+      <div class="gate-error" id="gate-error"></div>
+    </div>
+  </div>
+
+  <!-- MAIN PRESENTATION -->
+  <div id="presentation">
+
+    <!-- Desktop: iPhone mockup -->
+    <div class="desktop-view">
+      <div class="brand-info">
+        <div class="brand-logo">
+          <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" alt="Icon Hair" />
+        </div>
+        <div class="brand-badge">✦ Preview</div>
+        <div class="brand-name">Icon<br /><span>Backstage</span></div>
+        <div class="brand-desc">
+          Din salon i lommen. Bestil produkter, følg kampagner, administrer medarbejdere og hold styr på salgskonkurrencer — alt samlet ét sted.
+        </div>
+      </div>
+
+      <div class="iphone-wrapper">
+        <div class="iphone-frame">
+          <div class="dynamic-island"></div>
+          <div class="iphone-screen">
+            <iframe
+              id="app-iframe-desktop"
+              src="https://8081-ibvefpx9gcoq4l017yim9-738172b1.us1.manus.computer"
+              title="Icon Backstage App"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+              loading="eager"
+            ></iframe>
+          </div>
+          <div class="home-indicator"></div>
+          <div class="iphone-reflection"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile: full screen -->
+    <div class="mobile-view">
+      <iframe
+        id="app-iframe-mobile"
+        src="https://8081-ibvefpx9gcoq4l017yim9-738172b1.us1.manus.computer"
+        title="Icon Backstage App"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+        loading="eager"
+      ></iframe>
+    </div>
+
+  </div>
+
+  <script>
+    // ─── CONFIG ───
+    const PASSWORD = 'Anker';
+    const APP_URL = 'https://8081-ibvefpx9gcoq4l017yim9-738172b1.us1.manus.computer';
+    const SESSION_KEY = 'ib_auth';
+
+    // ─── AUTO-LOGIN if session exists ───
+    if (sessionStorage.getItem(SESSION_KEY) === '1') {
+      showApp();
+    }
+
+    // ─── PASSWORD CHECK ───
+    function checkPassword() {
+      const input = document.getElementById('password-input');
+      const error = document.getElementById('gate-error');
+      if (input.value === PASSWORD) {
+        sessionStorage.setItem(SESSION_KEY, '1');
+        error.textContent = '';
+        showApp();
+      } else {
+        error.textContent = 'Forkert adgangskode. Prøv igen.';
+        input.value = '';
+        input.focus();
+        // Shake animation
+        input.style.animation = 'none';
+        input.offsetHeight; // reflow
+        input.style.animation = 'shake 0.4s ease';
+      }
+    }
+
+    function showApp() {
+      document.getElementById('password-gate').classList.add('hidden');
+      const presentation = document.getElementById('presentation');
+      presentation.classList.add('visible');
+
+      // Set iframe src now (lazy load after auth)
+      document.getElementById('app-iframe-desktop').src = APP_URL;
+      document.getElementById('app-iframe-mobile').src = APP_URL;
+    }
+
+    // Enter key support
+    document.getElementById('password-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+  </script>
+
+  <style>
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
+    }
+  </style>
+
+</body>
+</html>
