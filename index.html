@@ -291,24 +291,31 @@
       position: absolute;
       top: 0;
       left: 0;
-      right: 0;
-      bottom: 0;
+      width: 320px;
+      height: 693px;
       border-radius: 50px;
       overflow: hidden;
       background: #000;
     }
 
-    .iphone-screen iframe {
+    .iphone-screen-inner {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 390px;
+      height: 844px;
+      transform-origin: top left;
+      transform: scale(0.8205);
+      overflow: hidden;
+    }
+
+    .iphone-screen-inner iframe {
       position: absolute;
       top: 0;
       left: 0;
       width: 390px;
       height: 844px;
       border: none;
-      transform-origin: top left;
-      transform: scale(0.8205);
-      /* scale = 320/390 = 0.8205 */
-      /* scaled height = 844 * 0.8205 = 693px — exact frame height */
       pointer-events: all;
       display: block;
     }
@@ -389,17 +396,10 @@
     }
 
     @media (max-height: 820px) {
-      .iphone-wrapper {
-        width: 280px;
-      }
-      .iphone-frame {
-        width: 280px;
-        height: 606px;
-      }
-      .iphone-screen iframe {
-        transform: scale(0.7179);
-        /* scale = 280/390 = 0.7179, height = 844*0.7179 = 606px */
-      }
+      .iphone-wrapper { width: 270px; }
+      .iphone-frame { width: 270px; height: 585px; }
+      .iphone-screen { width: 270px; height: 585px; }
+      .iphone-screen-inner { transform: scale(0.6923); /* 270/390 */ }
     }
   </style>
 </head>
@@ -446,13 +446,15 @@
         <div class="iphone-frame">
           <div class="dynamic-island"></div>
           <div class="iphone-screen">
-            <iframe
-              id="app-iframe-desktop"
-              src="https://8081-ibvefpx9gcoq4l017yim9-738172b1.us1.manus.computer"
-              title="Icon Backstage App"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-              loading="eager"
-            ></iframe>
+            <div class="iphone-screen-inner">
+              <iframe
+                id="app-iframe-desktop"
+                src="about:blank"
+                title="Icon Backstage App"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+                loading="eager"
+              ></iframe>
+            </div>
           </div>
           <div class="home-indicator"></div>
           <div class="iphone-reflection"></div>
