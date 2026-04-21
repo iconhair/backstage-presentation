@@ -6,17 +6,11 @@
   <title>Icon Backstage</title>
   <link rel="icon" href="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" />
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
       --espresso: #362a23;
       --cream: #f4f2f2;
-      --taupe: #706158;
-      --accent: #d6e3e9;
       --gold: #a1968f;
     }
 
@@ -24,6 +18,7 @@
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: var(--espresso);
       min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -40,28 +35,23 @@
       justify-content: center;
       z-index: 1000;
       flex-direction: column;
-      gap: 0;
-      padding: 0;
     }
+
+    #password-gate.hidden { display: none; }
 
     .gate-center-group {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0;
-    }
-
-    #password-gate.hidden {
-      display: none;
+      gap: 20px;
     }
 
     .gate-logo {
-      width: 380px;
-      height: 220px;
+      width: 320px;
+      height: 180px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
     }
 
     .gate-logo img {
@@ -70,27 +60,12 @@
       object-fit: contain;
     }
 
-    .gate-title {
-      color: var(--cream);
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: -0.5px;
-      text-align: center;
-      display: none;
-    }
-
-    .gate-subtitle {
-      display: none;
-    }
-
     .gate-form {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
       width: 280px;
-      padding: 0;
-      margin-top: 0;
     }
 
     .gate-input {
@@ -98,24 +73,16 @@
       padding: 16px 20px;
       border-radius: 14px;
       border: 1.5px solid rgba(255,255,255,0.15);
-      background: rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.07);
       color: var(--cream);
-      font-size: 18px;
+      font-size: 16px;
       text-align: center;
-      letter-spacing: 4px;
       outline: none;
-      transition: border-color 0.2s;
+      letter-spacing: 2px;
     }
 
-    .gate-input::placeholder {
-      letter-spacing: 1px;
-      color: rgba(255,255,255,0.3);
-      font-size: 14px;
-    }
-
-    .gate-input:focus {
-      border-color: rgba(255,255,255,0.4);
-    }
+    .gate-input::placeholder { color: rgba(244,242,242,0.4); letter-spacing: 0; }
+    .gate-input:focus { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.1); }
 
     .gate-btn {
       width: 100%;
@@ -127,17 +94,11 @@
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      transition: opacity 0.2s, transform 0.1s;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.3px;
+      transition: opacity 0.15s;
     }
 
-    .gate-btn:hover {
-      opacity: 0.9;
-    }
-
-    .gate-btn:active {
-      transform: scale(0.98);
-    }
+    .gate-btn:active { opacity: 0.85; transform: scale(0.98); }
 
     .gate-error {
       color: #ff6b6b;
@@ -154,15 +115,11 @@
       height: 100dvh;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      gap: 24px;
     }
 
-    #presentation.visible {
-      display: flex;
-    }
+    #presentation.visible { display: flex; }
 
-    /* Desktop: iPhone mockup */
+    /* ─── DESKTOP: iPhone mockup layout ─── */
     .desktop-view {
       display: flex;
       align-items: center;
@@ -172,43 +129,22 @@
       padding: 20px;
     }
 
+    /* Brand info sidebar */
     .brand-info {
       display: flex;
       flex-direction: column;
       gap: 16px;
-      max-width: 280px;
+      max-width: 260px;
     }
 
     .brand-logo {
-      width: 64px;
-      height: 64px;
-      border-radius: 16px;
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
       overflow: hidden;
     }
 
-    .brand-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .brand-name {
-      color: var(--cream);
-      font-size: 36px;
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -1px;
-    }
-
-    .brand-name span {
-      color: var(--gold);
-    }
-
-    .brand-desc {
-      color: rgba(255,255,255,0.5);
-      font-size: 14px;
-      line-height: 1.6;
-    }
+    .brand-logo img { width: 100%; height: 100%; object-fit: cover; }
 
     .brand-badge {
       display: inline-flex;
@@ -226,180 +162,211 @@
       width: fit-content;
     }
 
-    /* iPhone 15 Pro mockup */
-    .iphone-wrapper {
+    .brand-name {
+      color: var(--cream);
+      font-size: 34px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .brand-name span { color: #d6c9a0; }
+
+    .brand-desc {
+      color: rgba(255,255,255,0.45);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ─── iPhone 15 Pro mockup ─── */
+    /*
+      iPhone 15 Pro native: 393 × 852 pt
+      We render the iframe at exactly 393 × 852 px (1:1 with native points)
+      Then scale the whole phone down to fit the screen.
+
+      Scale factor s = desired_frame_width / 393
+      Frame height   = 852 × s  (no clipping needed)
+
+      Default: desired_frame_width = 300px
+        s = 300/393 ≈ 0.7634
+        frame_height = 852 × 0.7634 ≈ 650px
+    */
+    .phone-shell {
+      --s: 0.7634;                        /* scale factor */
+      --fw: 300px;                        /* frame width  = 393 × s */
+      --fh: 650px;                        /* frame height = 852 × s */
+      --br: 47px;                         /* border-radius (scaled from 62px) */
+
       position: relative;
-      width: 320px;
+      width: var(--fw);
+      height: var(--fh);
+      border-radius: var(--br);
+      background: #1c1c1e;
+      box-shadow:
+        0 0 0 1.5px #3a3a3c,
+        0 0 0 3px #1c1c1e,
+        0 0 0 4.5px #48484a,
+        0 32px 72px rgba(0,0,0,0.7),
+        inset 0 0 0 0.5px rgba(255,255,255,0.06);
       flex-shrink: 0;
     }
 
-    .iphone-frame {
-      position: relative;
-      width: 320px;
-      height: 693px;
-      background: #1a1a1a;
-      border-radius: 50px;
-      box-shadow:
-        0 0 0 2px #3a3a3a,
-        0 0 0 4px #1a1a1a,
-        0 0 0 6px #4a4a4a,
-        0 40px 80px rgba(0,0,0,0.6),
-        inset 0 0 0 1px rgba(255,255,255,0.05);
-      overflow: hidden;
-    }
-
-    /* Side buttons */
-    .iphone-frame::before {
+    /* Volume buttons (left) */
+    .phone-shell::before {
       content: '';
       position: absolute;
-      left: -8px;
-      top: 120px;
-      width: 4px;
-      height: 36px;
-      background: #3a3a3a;
+      left: -5px;
+      top: 96px;
+      width: 3px;
+      height: 28px;
+      background: #3a3a3c;
       border-radius: 2px 0 0 2px;
-      box-shadow: 0 48px 0 #3a3a3a, 0 88px 0 #3a3a3a;
+      box-shadow: 0 38px 0 #3a3a3c, 0 70px 0 #3a3a3c;
       z-index: 10;
     }
 
-    .iphone-frame::after {
+    /* Power button (right) */
+    .phone-shell::after {
       content: '';
       position: absolute;
-      right: -8px;
-      top: 160px;
-      width: 4px;
-      height: 64px;
-      background: #3a3a3a;
+      right: -5px;
+      top: 128px;
+      width: 3px;
+      height: 52px;
+      background: #3a3a3c;
       border-radius: 0 2px 2px 0;
       z-index: 10;
+    }
+
+    /* The screen area — clips to rounded corners */
+    .phone-screen {
+      position: absolute;
+      inset: 0;
+      border-radius: var(--br);
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* The iframe is rendered at full native size, then scaled down */
+    .phone-screen iframe {
+      display: block;
+      width: 393px;
+      height: 852px;
+      border: none;
+      transform-origin: top left;
+      transform: scale(var(--s));
+      pointer-events: all;
     }
 
     /* Dynamic Island */
     .dynamic-island {
       position: absolute;
-      top: 14px;
+      top: calc(11px * var(--s));
       left: 50%;
       transform: translateX(-50%);
-      width: 120px;
-      height: 34px;
+      width: calc(120px * var(--s));
+      height: calc(34px * var(--s));
       background: #000;
       border-radius: 20px;
       z-index: 20;
+      pointer-events: none;
     }
 
-    .iphone-screen {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 320px;
-      height: 693px;
-      border-radius: 50px;
-      overflow: hidden;
-      background: #000;
-    }
-
-    .iphone-screen-inner {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 390px;
-      height: 844px;
-      transform-origin: top left;
-      transform: scale(0.8205);
-      overflow: hidden;
-    }
-
-    .iphone-screen-inner iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 390px;
-      height: 844px;
-      border: none;
-      pointer-events: all;
-      display: block;
-    }
-
-    /* Bottom indicator */
+    /* Home indicator */
     .home-indicator {
       position: absolute;
-      bottom: 10px;
+      bottom: calc(8px * var(--s));
       left: 50%;
       transform: translateX(-50%);
-      width: 120px;
-      height: 5px;
-      background: rgba(255,255,255,0.3);
+      width: calc(120px * var(--s));
+      height: calc(5px * var(--s));
+      background: rgba(255,255,255,0.28);
       border-radius: 3px;
       z-index: 20;
+      pointer-events: none;
     }
 
-    /* Reflection overlay */
-    .iphone-reflection {
+    /* Subtle glass reflection */
+    .phone-reflection {
       position: absolute;
       inset: 0;
-      border-radius: 54px;
-      background: linear-gradient(
-        135deg,
-        rgba(255,255,255,0.06) 0%,
-        transparent 40%,
-        transparent 60%,
-        rgba(255,255,255,0.02) 100%
-      );
+      border-radius: var(--br);
+      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 45%);
       pointer-events: none;
       z-index: 30;
+    }
+
+    /* ─── Responsive scaling ─── */
+    /* Tall screens (≥900px height): slightly bigger phone */
+    @media (min-height: 900px) {
+      .phone-shell {
+        --s: 0.8346;
+        --fw: 328px;
+        --fh: 711px;
+        --br: 52px;
+      }
+    }
+
+    /* Short screens (<780px height): smaller phone */
+    @media (max-height: 780px) {
+      .phone-shell {
+        --s: 0.6921;
+        --fw: 272px;
+        --fh: 590px;
+        --br: 43px;
+      }
+    }
+
+    /* Very short screens (<680px height): even smaller */
+    @media (max-height: 680px) {
+      .phone-shell {
+        --s: 0.6107;
+        --fw: 240px;
+        --fh: 520px;
+        --br: 38px;
+      }
+    }
+
+    /* Hide brand info on narrow screens */
+    @media (max-width: 860px) {
+      .brand-info { display: none; }
     }
 
     /* ─── MOBILE VIEW (full screen) ─── */
     .mobile-view {
       display: none;
+      position: fixed;
+      inset: 0;
       width: 100%;
       height: 100dvh;
-      height: 100vh; /* fallback */
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
     }
 
     .mobile-view iframe {
+      display: block;
       width: 100%;
       height: 100%;
       height: 100dvh;
       border: none;
-      display: block;
     }
 
-    /* ─── RESPONSIVE ─── */
+    /* On mobile: hide desktop, show mobile full-screen */
     @media (max-width: 768px) {
-      body {
-        background: #000;
-      }
+      body { background: #000; }
+      #password-gate { background: var(--espresso); }
+      .desktop-view { display: none !important; }
+      .mobile-view { display: block !important; }
 
-      #password-gate {
-        background: var(--espresso);
-      }
-
-      .desktop-view {
-        display: none !important;
-      }
-
-      .mobile-view {
-        display: block !important;
-      }
+      .gate-logo { width: 260px; height: 150px; }
+      .gate-form { width: 260px; }
     }
 
-    @media (max-width: 900px) {
-      .brand-info {
-        display: none;
-      }
-    }
-
-    @media (max-height: 820px) {
-      .iphone-wrapper { width: 270px; }
-      .iphone-frame { width: 270px; height: 585px; }
-      .iphone-screen { width: 270px; height: 585px; }
-      .iphone-screen-inner { transform: scale(0.6923); /* 270/390 */ }
+    /* Shake animation */
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-8px); }
+      40% { transform: translateX(8px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
     }
   </style>
 </head>
@@ -408,21 +375,21 @@
   <!-- PASSWORD GATE -->
   <div id="password-gate">
     <div class="gate-center-group">
-    <div class="gate-logo">
-      <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" alt="Icon Backstage" />
-    </div>
-    <div class="gate-form">
-      <input
-        type="password"
-        id="password-input"
-        class="gate-input"
-        placeholder="Adgangskode"
-        autocomplete="current-password"
-        autofocus
-      />
-      <button class="gate-btn" onclick="checkPassword()">Åbn app →</button>
-      <div class="gate-error" id="gate-error"></div>
-    </div>
+      <div class="gate-logo">
+        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" alt="Icon Backstage" />
+      </div>
+      <div class="gate-form">
+        <input
+          type="password"
+          id="password-input"
+          class="gate-input"
+          placeholder="Adgangskode"
+          autocomplete="current-password"
+          autofocus
+        />
+        <button class="gate-btn" onclick="checkPassword()">Åbn app →</button>
+        <div class="gate-error" id="gate-error"></div>
+      </div>
     </div>
   </div>
 
@@ -431,6 +398,8 @@
 
     <!-- Desktop: iPhone mockup -->
     <div class="desktop-view">
+
+      <!-- Brand sidebar -->
       <div class="brand-info">
         <div class="brand-logo">
           <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663222833884/CWGyVsBcYSzTVuzr.png" alt="Icon Hair" />
@@ -442,51 +411,43 @@
         </div>
       </div>
 
-      <div class="iphone-wrapper">
-        <div class="iphone-frame">
-          <div class="dynamic-island"></div>
-          <div class="iphone-screen">
-            <div class="iphone-screen-inner">
-              <iframe
-                id="app-iframe-desktop"
-                src="about:blank"
-                title="Icon Backstage App"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-                loading="eager"
-              ></iframe>
-            </div>
-          </div>
-          <div class="home-indicator"></div>
-          <div class="iphone-reflection"></div>
+      <!-- iPhone shell -->
+      <div class="phone-shell">
+        <div class="phone-screen">
+          <iframe
+            id="app-iframe-desktop"
+            src="about:blank"
+            title="Icon Backstage App"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
+          ></iframe>
         </div>
+        <div class="dynamic-island"></div>
+        <div class="home-indicator"></div>
+        <div class="phone-reflection"></div>
       </div>
+
     </div>
 
     <!-- Mobile: full screen -->
     <div class="mobile-view">
       <iframe
         id="app-iframe-mobile"
-        src="https://8081-ibvefpx9gcoq4l017yim9-738172b1.us1.manus.computer"
+        src="about:blank"
         title="Icon Backstage App"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope"
-        loading="eager"
       ></iframe>
     </div>
 
   </div>
 
   <script>
-    // ─── CONFIG ───
-    const PASSWORD = 'Anker';
-    const APP_URL = 'https://8081-ibvefpx9gcoq4l017yim9-738172b1.us1.manus.computer';
-    const SESSION_KEY = 'ib_auth';
+    const PASSWORD  = 'Anker';
+    const APP_URL   = 'https://8081-ibvefpx9gcoq4l017yim9-738172b1.us1.manus.computer';
+    const SESSION_KEY = 'ib_auth_v2';
 
-    // ─── AUTO-LOGIN if session exists ───
-    if (sessionStorage.getItem(SESSION_KEY) === '1') {
-      showApp();
-    }
+    // Auto-login if session exists
+    if (sessionStorage.getItem(SESSION_KEY) === '1') showApp();
 
-    // ─── PASSWORD CHECK ───
     function checkPassword() {
       const input = document.getElementById('password-input');
       const error = document.getElementById('gate-error');
@@ -498,38 +459,23 @@
         error.textContent = 'Forkert adgangskode. Prøv igen.';
         input.value = '';
         input.focus();
-        // Shake animation
         input.style.animation = 'none';
-        input.offsetHeight; // reflow
+        input.offsetHeight;
         input.style.animation = 'shake 0.4s ease';
       }
     }
 
     function showApp() {
       document.getElementById('password-gate').classList.add('hidden');
-      const presentation = document.getElementById('presentation');
-      presentation.classList.add('visible');
-
-      // Set iframe src now (lazy load after auth)
+      document.getElementById('presentation').classList.add('visible');
       document.getElementById('app-iframe-desktop').src = APP_URL;
-      document.getElementById('app-iframe-mobile').src = APP_URL;
+      document.getElementById('app-iframe-mobile').src  = APP_URL;
     }
 
-    // Enter key support
     document.getElementById('password-input').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') checkPassword();
     });
   </script>
-
-  <style>
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20% { transform: translateX(-8px); }
-      40% { transform: translateX(8px); }
-      60% { transform: translateX(-5px); }
-      80% { transform: translateX(5px); }
-    }
-  </style>
 
 </body>
 </html>
